@@ -1,41 +1,39 @@
 package md.secumihai;
 
+
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.openxml4j.opc.OPCPackage;
+import org.apache.poi.xwpf.usermodel.*;
+
+import javax.swing.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+public class Main  {
+    public static void main(String[] args) throws InvalidFormatException, IOException {
+        GUI gui = new GUI();
+        gui.setVisible(true);
 
-
-
-public class Main {
-    public static void main(String[] args) {
-
-        Student student = new Student("Ion", "Mesina", "mesinaion@javaguides.com");
-        Student student1 = new Student("Vanea", "Buldozer", "buldozervanea@javaguides.com");
-        Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            // start a transaction
-            transaction = session.beginTransaction();
-            // save the student objects
-            session.save(student);
-            session.save(student1);
-            // commit transaction
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
+     /*   XWPFDocument doc = new XWPFDocument(OPCPackage.open("D:\\172final.docx"));
+        for (XWPFTable tbl : doc.getTables()) {
+            for (XWPFTableRow row : tbl.getRows()) {
+                for (XWPFTableCell cell : row.getTableCells()) {
+                    for (XWPFParagraph p : cell.getParagraphs()) {
+                        for (XWPFRun r : p.getRuns()) {
+                            String text = r.getText(0);
+                            if (text != null && text.contains("3209")) {
+                                System.out.println(row.getCell(3).getText());
+                            }
+                        }
+                    }
+                }
             }
-            e.printStackTrace();
         }
-
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            List <Student> students = session.createQuery("From Student", Student.class).list();
-            students.forEach(s -> System.out.println(s.getFirstName()));
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
+        try {
+            doc.write(new FileOutputStream("output.docx"));
+        } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 }
