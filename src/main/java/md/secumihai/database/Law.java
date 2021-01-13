@@ -1,6 +1,7 @@
 package md.secumihai.database;
 
 import javax.persistence.*;
+import java.sql.Blob;
 import java.sql.Clob;
 import java.time.LocalDate;
 import java.util.Date;
@@ -26,14 +27,14 @@ public class Law {
     private LocalDate finalDate;
 
     @Lob
-    @Column(name = "content")
-    private Clob content;
+    @Column(name = "content", columnDefinition="BLOB")
+    private byte[] content;
 
     public Law() {
 
     }
 
-    public Law( String description, LocalDate intialDate, LocalDate finalDate, Clob content) {
+    public Law( String description, LocalDate intialDate, LocalDate finalDate, byte [] content) {
         this.description = description;
         this.intialDate = intialDate;
         this.finalDate = finalDate;
@@ -72,11 +73,11 @@ public class Law {
         this.finalDate = finalDate;
     }
 
-    public Clob getContent() {
+    public byte[] getContent() {
         return content;
     }
 
-    public void setContent(Clob content) {
+    public void setContent(byte[] content) {
         this.content = content;
     }
 }
