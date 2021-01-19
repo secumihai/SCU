@@ -1,4 +1,4 @@
-package md.secumihai.database;
+package md.secumihai.database.Entities;
 
 
 import javax.persistence.Column;

@@ -1,4 +1,4 @@
-package md.secumihai.database;
+package md.secumihai.database.Entities;
 
 import javax.persistence.*;
 import java.sql.Blob;
@@ -6,8 +6,11 @@ import java.sql.Clob;
 import java.time.LocalDate;
 import java.util.Date;
 
-/* This is a entity class where will be mapped and keeped all the changes in LEGE Nr. 172 din 25-07-2014
-privind aprobarea Nomenclaturii combinate a mărfurilor*/
+/***
+     THIS IS A ENTITY CLASS WHERE WILL BE MAPPED AND KEEPED ALL THE CHANGES
+     ABOUT LEGE NR. 172 DIN 25-07-2014
+     PRIVIND APROBAREA NOMENCLATURII COMBINATE A MĂRFURILOR
+ ***/
 @Entity
 @Table(name = "Law")
 public class Law {

@@ -1,29 +1,29 @@
 package md.secumihai;
 
 
-import md.secumihai.database.Account;
-import md.secumihai.database.Law;
-import org.apache.commons.compress.utils.IOUtils;
+import md.secumihai.database.Entities.Account;
+import md.secumihai.database.GenericDao;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.apache.poi.openxml4j.opc.OPCPackage;
-import org.apache.poi.xwpf.usermodel.*;
-import org.hibernate.Hibernate;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.engine.jdbc.ClobProxy;
 
-import javax.swing.*;
 import java.io.*;
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
 
 public class Main  {
 
-    public static void main(String[] args) throws InvalidFormatException, IOException {
 
-        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+
+    public static void main(String[] args) throws InvalidFormatException, IOException {
+        GenericDao dao = new GenericDao();
+        Account account = (Account) dao.get(Account.class,"admin");
+        System.out.println("Account name: "+account.getName());
+        System.out.println("Account user name: "+account.getUserName());
+        System.out.println("Account secret Question: "+account.getSecretQuestion());
+
+
+
+
+
+
+      /*  SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Account account = new Account("admin","Secu Mihail","liahimuces","Care este numele primului Dvs. animal de companie","Rex",true);
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -68,7 +68,7 @@ public class Main  {
             }
         }
         session.getTransaction().commit();
-        session.close();
+        session.close(); */
         System.out.println("gata.....");
 
     /*  XWPFDocument doc = new XWPFDocument(OPCPackage.open("/home/mihai/Desktop/createparagraph.docx"));
